@@ -1,0 +1,8 @@
+{
+
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.28",
+      "ext-json": "*",
+        "tecnickcom/tcpdf": "^6.6"
+    }
+}

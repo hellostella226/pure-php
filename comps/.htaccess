@@ -1,0 +1,33 @@
+Options -Indexes
+
+ErrorDocument 404 https://***.com
+ErrorDocument 403 https://***.com
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^(l|t)?admin\.***\.com [NC]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule /?([0-9a-zA-Z-]{0,15})/?([0-9a-zA-Z-]{0,100}) /b***-*abc/main.php?service=$1&dest=$2 [NC,L,QSA]
+#RewriteRule /?([0-9a-zA-Z-]{0,15})/?([0-9a-zA-Z-]{0,30}) /b***-*abc/index.php?type=$1&req=$2 [NC,L,QSA]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^process/(.*)$ /process/?$1 [NC,L]
+
+# bot 등 차단
+#SetEnvIfNoCase User-Agent .*bot.* search_robot
+#SetEnvIfNoCase User-Agent .*bing.* search_robot
+#SetEnvIfNoCase User-Agent .*crawl.* search_robot
+#Order Deny,Allow
+#Deny from env=search_robot
+#Allow from All
+# 해외 IP 차단 : 국내 외 모두 차단
+#SetEnvIf GEOIP_COUNTRY_CODE KR AllowCountry
+#Order Deny,Allow
+#Deny from all
+#Allow from env=AllowCountry
+# 해외 IP 차단 : 특정 국가 차단
+#SetEnvIf GEOIP_COUNTRY_CODE AA BlockCountry
+#SetEnvIf GEOIP_COUNTRY_CODE BB BlockCountry
+#Order Deny,Allow
+#Deny from env=BolckCountry
+#Allow from all
