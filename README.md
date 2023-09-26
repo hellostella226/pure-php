@@ -2,6 +2,7 @@
 프레임워크 미적용상태의 legacy 코드 관리자 페이지
 
 - LAMP : rocky linux 8.6, php 7.4, mariadb 10.3, apache
+- 환경구성 : docker(docker-compose)
 - framework : X
 
 * 설명
